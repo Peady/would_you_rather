@@ -1,10 +1,29 @@
-<nav>
-  <div>
-    <%= link_to 'Home', root_path %>
-    <%= link_to 'About', about_path %>
-  </div>
-    <%= link_to 'Sign in', '#' %>
-    <%= link_to 'Sign up', '#' %>
+<header class='navbar navbar-default'>
+  <div class='container-fluid'>
+    <%= link_to 'Would you rather?', root_path, id: 'logo' %>
+    <nav>
+      <ul class='nav nav-pills navbar-right'>
+        <li role='presentation'><%= link_to 'Home', root_path %></li>
+        <li role='presentation'><%= link_to 'Help', '#'%></li>
+        <% if logged_in? %>
+          <li><%= link_to 'Users', '#' %></li>
+          <li class='dropdown'>
+            <a href='#' class='dropdown-toggle' data-toggle='dropdown'>
+              Account <b class='caret'></b>
+            </a>
+            <ul class='dropdown-menu'>
+              <li><%= link_to 'Profile', current_user %></li>
+              <li><%= link_to 'Settings', '#' %></li>
+              <li class='divider'></li>
+              <li>
+                <%= link_to 'Log out', log_out_path, method: 'delete' %>
+              </li>
+            </ul>
+          </li> 
+        <% else %>
+          <li><%= link_to 'Log in', log_in_path %></li>
+        <% end %>
+    </nav>
   </div>
 </nav>
 

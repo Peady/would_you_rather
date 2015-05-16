@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Would You Rather?</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
 
-<%= render 'layouts/header' %>
-<%= yield %>
+  <head>
+    <title>Would You Rather?</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-</body>
+  <body>
+
+    <%= render 'layouts/header' %> 
+
+    <% flash.each do |message_type, message| %>
+      <%= message %>
+    <% end %> 
+
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+
+    <%= debug(params) if Rails.env.development? %>
+  </body>
+
 </html>
